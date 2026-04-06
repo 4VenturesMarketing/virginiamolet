@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMsg = document.getElementById('successMsg');
 
     if(form) {
+        // Form Submission Logic
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -57,6 +58,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 spinner.classList.add('hidden');
                 submitBtn.disabled = false;
             }
+        });
+
+        // Floating CTA Logic
+        const floatingCta = document.getElementById('floatingCta');
+        
+        // Use Intersection Observer to hide/show based on form visibility
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    floatingCta.classList.remove('active');
+                } else {
+                    // Show if we scrolled past the hero or form
+                    if (window.scrollY > 400) {
+                        floatingCta.classList.add('active');
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(form);
+
+        // Simple scroll behavior as fallback/addition
+        window.addEventListener('scroll', () => {
+            const rect = form.getBoundingClientRect();
+            if (rect.top > window.innerHeight || rect.bottom < 0) {
+                if (window.scrollY > 500) {
+                    floatingCta.classList.add('active');
+                }
+            } else {
+                floatingCta.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll to form
+        floatingCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     }
 });

@@ -184,9 +184,58 @@ body {
 }
 
 .glass-card p {
-    font-size: 0.9rem;
-    color: #94a3b8;
+    font-size: 1.15rem; /* Increased significantly from 0.9rem */
+    color: var(--color-white); /* Brighter for contrast */
     margin-bottom: 32px;
+    font-weight: 500;
+}
+
+/* Floating CTA */
+.floating-cta {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(135deg, var(--color-primary), #00d2ff);
+    color: white;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 15px 30px rgba(0, 152, 214, 0.4);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+}
+
+.floating-cta.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.floating-cta:hover {
+    transform: translateX(-50%) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 152, 214, 0.5);
+    filter: brightness(1.1);
+}
+
+@media (max-width: 576px) {
+    .floating-cta {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        transform: translateY(100px);
+        border-radius: 0;
+        padding: 20px;
+    }
+    .floating-cta.active {
+        transform: translateY(0);
+    }
 }
 
 .form-group {
