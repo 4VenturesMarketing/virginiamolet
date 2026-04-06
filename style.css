@@ -110,8 +110,8 @@ body {
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 2px;
-    margin-top: 0;
-    margin-bottom: 12px;
+    margin-top: 8px; /* Added back to give space from logo above */
+    margin-bottom: 24px;
     backdrop-filter: blur(4px);
 }
 
@@ -122,22 +122,23 @@ body {
 .text-logo-img {
     display: block;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
-    margin-bottom: 32px;
+    margin-bottom: 8px; /* Reduced to bring date closer */
     max-width: 450px;
     width: 100%;
 }
 
 .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.25rem; /* Increased from 1.1rem */
     color: #cbd5e1;
-    max-width: 500px;
-    margin-bottom: 24px;
+    max-width: 600px; /* Increased from 500px to allow more text per line */
+    margin-bottom: 32px;
     font-weight: 300;
+    line-height: 1.4;
 }
 
 .hero-brand-logo {
-    height: 32px;
-    filter: brightness(0) invert(1) opacity(0.6);
+    height: 48px; /* Increased from 32px */
+    filter: brightness(0) invert(1) opacity(0.8); /* Slightly more visible */
     display: block;
     transition: var(--transition);
 }
