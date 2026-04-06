@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+node_modules/
+.vscode/
+.idea/
+.gemini/
+.agents/
+.agent/
+_agents/
+_agent/
+tmp/
+/Users/mfargas/.gemini/antigravity/brain/cfe36ab9-6fad-4a19-973d-67327eecd879/

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salón Internacional de Coaching Ejecutivo | 12 de Junio, Madrid</title>
+    <meta name="description" content="Inscríbete al Salón Internacional de Coaching Ejecutivo en España este 12 de Junio de 11:00 a 20:00 en el Movistar Arena de Madrid con Virginia Molet.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <!-- Logo movido al hero por petición del usuario -->
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="assets/movistar-arena-exterior.jpg" alt="Movistar Arena Exterior" class="bg-image">
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 class="main-title">Salón Internacional de Coaching Ejecutivo en España</h1>
+                    <span class="date-badge">12 DE JUNIO • 11:00 - 20:00 • MADRID</span>
+                    <img src="assets/text-salon.png" alt="Salón Internacional de Coaching Ejecutivo" class="text-logo-img">
+                    <p class="subtitle">El encuentro presencial definitivo en el Movistar Arena para líderes, ejecutivos y profesionales del coaching impartido junto a Virginia Molet.</p>
+                    <img src="assets/logo-movistar-arena.png" alt="Movistar Arena Madrid" class="hero-brand-logo">
+                </div>
+
+                <div class="form-wrapper">
+                    <div class="glass-card">
+                        <h2>Reserva tu Plaza</h2>
+                        <p>Plazas limitadas. Regístrate ahora para asegurar tu asistencia al salón.</p>
+                        
+                        <form id="inscription-form" class="event-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Apellido</label>
+                                    <input type="text" id="apellido" name="apellido" required placeholder="Tu apellido">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <div class="phone-input">
+                                    <select id="codigo-pais" name="codigo-pais" class="country-code">
+                                        <option value="+34">🇪🇸 +34</option>
+                                        <option value="+52">🇲🇽 +52</option>
+                                        <option value="+54">🇦🇷 +54</option>
+                                        <option value="+57">🇨🇴 +57</option>
+                                        <option value="+56">🇨🇱 +56</option>
+                                        <option value="+1">🇺🇸 +1</option>
+                                        <option value="+00">🌍 Otro</option>
+                                    </select>
+                                    <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+                                </div>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="legal" name="legal" required>
+                                <label for="legal" class="legal-text">He leído y acepto el <a href="#">Aviso Legal</a> y la Política de Privacidad.</label>
+                            </div>
+
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span>Inscribirme al Evento</span>
+                                <div class="spinner hidden"></div>
+                            </button>
+                            <div class="success-msg hidden" id="successMsg">¡Gracias por inscribirte! Nos pondremos en contacto pronto con los detalles de tu acceso.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container about-grid">
+                <div class="about-image">
+                    <img src="assets/indoor-networking.jpg" alt="Networking de Coaching" class="img-fluid rounded-shadow">
+                    <div class="floating-badge">
+                        <img src="assets/logo-movistar-m.png" alt="Movistar" class="m-logo">
+                        <span>Experiencia VIP</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">El futuro del Coaching Ejecutivo comienza aquí</h2>
+                    <p>Un espacio diseñado para crear conexiones de alto nivel, aprender de los referentes del sector y transformar tu enfoque ejecutivo frente a los retos del siglo XXI.</p>
+                    <ul class="feature-list">
+                        <li><strong>Conferencias Magistrales:</strong> Descubre las últimas tendencias globales de la mano de expertos.</li>
+                        <li><strong>Networking Estratégico:</strong> Conecta con líderes internacionales, CEOs y directivos visionarios.</li>
+                        <li><strong>Casos Prácticos:</strong> Aplicación real a entornos empresariales hipercompetitivos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <img src="assets/logo-movistar-arena.png" alt="Movistar Arena" class="footer-logo">
+            <p>&copy; 2026 Salón Internacional de Coaching Ejecutivo en España. Virginia Molet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('inscription-form');
+    const submitBtn = document.getElementById('submitBtn');
+    const spinner = submitBtn.querySelector('.spinner');
+    const btnText = submitBtn.querySelector('span');
+    const successMsg = document.getElementById('successMsg');
+
+    if(form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            btnText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            submitBtn.disabled = true;
+            
+            // Collect data
+            const formData = new FormData(form);
+            const data = {
+                nombre: formData.get('nombre'),
+                apellido: formData.get('apellido'),
+                email: formData.get('email'),
+                telefono: formData.get('telefono'),
+                legal: formData.get('legal') === 'on',
+                source: window.location.hostname
+            };
+
+            try {
+                const response = await fetch('https://n8n.4ventures.es/webhook/virginia-molet-coaching', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error('Error en el envío');
+
+                // Hide specific form fields and show success message
+                form.querySelectorAll('div').forEach(child => {
+                    if(child.id !== 'successMsg' && !child.classList.contains('spinner') && child !== form) {
+                        child.style.transition = 'opacity 0.3s ease';
+                        child.style.opacity = '0';
+                        setTimeout(() => child.classList.add('hidden'), 300);
+                    }
+                });
+                
+                submitBtn.style.opacity = '0';
+                setTimeout(() => submitBtn.classList.add('hidden'), 300);
+                
+                setTimeout(() => {
+                    successMsg.classList.remove('hidden');
+                }, 300);
+
+            } catch (err) {
+                console.error(err);
+                alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+                btnText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});
