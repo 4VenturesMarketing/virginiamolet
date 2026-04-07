@@ -117,7 +117,15 @@ body {
 
 /* Fallback image if main title isn't used */
 .main-title {
-    display: none; /* Hidden for visual design, kept for SEO in HTML */
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: var(--color-primary);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    letter-spacing: -1.5px;
+    text-transform: none;
 }
 .text-logo-img {
     display: block;
@@ -555,7 +563,7 @@ footer p {
 }
 
 @media (max-width: 576px) {
-    .main-title { display: none; }
+    .main-title { display: block; }
     .form-row { grid-template-columns: 1fr; }
     .glass-card { padding: 30px 20px; }
     .section-title { font-size: 2.2rem; }
