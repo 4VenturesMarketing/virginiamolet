@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const isFormVisible = rect.top < window.innerHeight && rect.bottom > 0;
             const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
             
-            // Show when user scrolls down at least 50px
-            if (window.scrollY > 50 && !isFormVisible) {
+            // Show when user scrolls down at least 50px, but hide if form is visible or at bottom
+            if (window.scrollY > 50 && !isFormVisible && !isBottom) {
                 floatingCta.classList.add('active');
             } else {
                 floatingCta.classList.remove('active');
