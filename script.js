@@ -27,6 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
+                // Send directly to Zapier using form-urlencoded (avoids most CORS issues)
+                const zapierParams = new URLSearchParams();
+                zapierParams.append('nombre', data.nombre);
+                zapierParams.append('apellido', data.apellido);
+                zapierParams.append('email', data.email);
+                zapierParams.append('telefono', data.telefono);
+                zapierParams.append('etiqueta', 'salón');
+
+                fetch('https://hooks.zapier.com/hooks/catch/13513217/u7m4eoq/', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: zapierParams.toString()
+                }).catch(e => console.warn('Zapier direct failed'));
+
                 const response = await fetch('https://n8n.4ventures.es/webhook/virginia-molet-coaching', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -36,8 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) throw new Error('Error en el envío');
 
                 // Redirect to thank you page
-                window.location.href = 'gracias.html';
-
+                setTimeout(() => {
+                    window.location.href = 'gracias.html';
+                }, 500);
 
             } catch (err) {
                 console.error(err);
