@@ -1,6 +1,8 @@
 :root {
-    --color-primary: #0098d6;     /* Light blue seen in Movistar text */
+    --color-primary: #0098d6;
     --color-primary-dark: #0077a9;
+    --color-accent-yellow: #fbbf24;
+    --color-accent-yellow-dark: #d97706;
     --color-dark: #0a0e17;        /* Very dark blue/black */
     --color-darker: #05070a;
     --color-text: #e2e8f0;
@@ -103,16 +105,17 @@ body {
 .date-badge {
     display: inline-block;
     padding: 6px 16px;
-    background: rgba(0, 152, 214, 0.15);
-    border: 1px solid rgba(0, 152, 214, 0.3);
-    color: var(--color-primary);
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: var(--color-accent-yellow);
     border-radius: 100px;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 2px;
-    margin-top: 8px; /* Added back to give space from logo above */
+    margin-top: 8px; 
     margin-bottom: 24px;
     backdrop-filter: blur(4px);
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
 }
 
 /* Fallback image if main title isn't used */
@@ -175,7 +178,7 @@ body {
     left: 0;
     width: 60%;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    background: linear-gradient(90deg, transparent, var(--color-accent-yellow), transparent);
     transform: translateX(-100%);
     animation: shimmer 3s infinite;
 }
@@ -204,14 +207,14 @@ body {
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: linear-gradient(135deg, var(--color-primary), #00d2ff);
-    color: white;
+    background: linear-gradient(135deg, var(--color-accent-yellow), var(--color-accent-yellow-dark));
+    color: #000;
     text-decoration: none;
     padding: 16px 32px;
     border-radius: 100px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.1rem;
-    box-shadow: 0 15px 30px rgba(0, 152, 214, 0.4);
+    box-shadow: 0 15px 30px rgba(217, 119, 6, 0.4);
     z-index: 1000;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     white-space: nowrap;
@@ -347,14 +350,14 @@ input::placeholder {
 
 .submit-btn {
     width: 100%;
-    background: linear-gradient(135deg, var(--color-primary), #00d2ff);
-    color: white;
+    background: linear-gradient(135deg, var(--color-accent-yellow), var(--color-accent-yellow-dark));
+    color: #000;
     border: none;
     padding: 16px;
     border-radius: 8px;
     font-family: var(--font-body);
     font-size: 1.05rem;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     transition: var(--transition);
     position: relative;
@@ -506,7 +509,7 @@ input::placeholder {
 }
 
 .feature-list strong {
-    color: white;
+    color: var(--color-accent-yellow);
 }
 
 /* Footer */
