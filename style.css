@@ -158,6 +158,27 @@ body {
     filter: brightness(0) invert(1) opacity(1);
 }
 
+.brand-group, .footer-brand-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.venue-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.venue-name.small {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    letter-spacing: 3px;
+}
+
 /* Glassmorphism Form */
 .glass-card {
     background: rgba(15, 23, 42, 0.6);
