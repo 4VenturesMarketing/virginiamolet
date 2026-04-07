@@ -35,21 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) throw new Error('Error en el envío');
 
-                // Hide specific form fields and show success message
-                form.querySelectorAll('div').forEach(child => {
-                    if(child.id !== 'successMsg' && !child.classList.contains('spinner') && child !== form) {
-                        child.style.transition = 'opacity 0.3s ease';
-                        child.style.opacity = '0';
-                        setTimeout(() => child.classList.add('hidden'), 300);
-                    }
-                });
-                
-                submitBtn.style.opacity = '0';
-                setTimeout(() => submitBtn.classList.add('hidden'), 300);
-                
-                setTimeout(() => {
-                    successMsg.classList.remove('hidden');
-                }, 300);
+                // Redirect to thank you page
+                window.location.href = 'gracias.html';
+
 
             } catch (err) {
                 console.error(err);
