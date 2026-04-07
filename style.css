@@ -148,8 +148,9 @@ body {
 }
 
 .hero-brand-logo {
-    height: 48px; /* Increased from 32px */
-    filter: brightness(0) invert(1) opacity(0.8); /* Slightly more visible */
+    height: 48px;
+    width: auto;
+    filter: brightness(0) invert(1) opacity(0.8);
     display: block;
     transition: var(--transition);
 }
@@ -161,6 +162,7 @@ body {
 .brand-group, .footer-brand-group {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
 }
 
@@ -550,6 +552,7 @@ footer {
 
 .footer-logo {
     height: 30px;
+    width: auto;
     filter: opacity(0.5) brightness(0) invert(1);
     transition: var(--transition);
 }
