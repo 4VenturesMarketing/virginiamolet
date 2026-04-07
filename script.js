@@ -82,10 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Simple scroll behavior as fallback/addition
         window.addEventListener('scroll', () => {
             const rect = form.getBoundingClientRect();
-            if (rect.top > window.innerHeight || rect.bottom < 0) {
-                if (window.scrollY > 500) {
-                    floatingCta.classList.add('active');
-                }
+            const isFormVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+            const isScrolledDown = window.scrollY > 500;
+
+            if (!isFormVisible && isScrolledDown && !isBottom) {
+                floatingCta.classList.add('active');
             } else {
                 floatingCta.classList.remove('active');
             }
