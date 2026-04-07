@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = form.getBoundingClientRect();
             const isFormVisible = rect.top < window.innerHeight && rect.bottom > 0;
             const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
-            const isScrolledDown = window.scrollY > 500;
-
-            if (!isFormVisible && isScrolledDown && !isBottom) {
+            
+            // Show when user scrolls down at least 50px
+            if (window.scrollY > 50 && !isFormVisible) {
                 floatingCta.classList.add('active');
             } else {
                 floatingCta.classList.remove('active');

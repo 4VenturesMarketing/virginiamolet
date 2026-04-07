@@ -103,19 +103,26 @@ body {
 }
 
 .date-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    background: rgba(251, 191, 36, 0.1);
-    border: 1px solid rgba(251, 191, 36, 0.4);
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: rgba(251, 191, 36, 0.05);
+    border: 1px solid rgba(251, 191, 36, 0.2);
     color: var(--color-accent-yellow);
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 800;
-    letter-spacing: 2px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     margin-top: 8px; 
     margin-bottom: 24px;
-    backdrop-filter: blur(4px);
-    text-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: var(--transition);
+}
+
+.date-badge:hover {
+    background: rgba(251, 191, 36, 0.1);
+    border-color: var(--color-accent-yellow);
 }
 
 /* Fallback image if main title isn't used */
@@ -642,9 +649,22 @@ footer p {
 }
 
 @media (max-width: 576px) {
-    .main-title { display: block; }
+    .hero {
+        padding-top: 60px;
+        align-items: flex-start;
+    }
+    .main-title { 
+        display: block; 
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    .date-badge {
+        font-size: 0.65rem;
+        padding: 6px 12px;
+        letter-spacing: 1px;
+    }
     .form-row { grid-template-columns: 1fr; }
     .glass-card { padding: 30px 20px; }
-    .section-title { font-size: 2.2rem; }
+    .section-title { font-size: 2rem; }
     .text-logo-img { max-width: 100%; }
 }
