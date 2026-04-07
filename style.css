@@ -476,7 +476,15 @@ input::placeholder {
     height: 40px;
 }
 
-.floating-badge span {
+.badge-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    opacity: 0.7;
+    margin-top: -8px;
+    letter-spacing: 1px;
+}
+
+.floating-badge span:last-child {
     font-family: var(--font-heading);
     font-size: 1.2rem;
     font-weight: 600;
