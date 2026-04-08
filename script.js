@@ -17,11 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Collect data
             const formData = new FormData(form);
+            const fullPhone = `${formData.get('codigo-pais')}${formData.get('telefono')}`;
+            
             const data = {
                 nombre: formData.get('nombre'),
                 apellido: formData.get('apellido'),
                 email: formData.get('email'),
-                telefono: formData.get('telefono'),
+                telefono: fullPhone,
                 legal: formData.get('legal') === 'on',
                 source: window.location.hostname
             };
