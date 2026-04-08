@@ -641,6 +641,14 @@ footer p {
         grid-template-columns: 1fr;
     }
     
+    .about-text {
+        order: 1;
+    }
+    
+    .about-image {
+        order: 2;
+    }
+    
     .floating-badge {
         right: 20px;
         bottom: -20px;
