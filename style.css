@@ -105,14 +105,14 @@ body {
 .date-badge {
     display: inline-flex;
     align-items: center;
-    padding: 8px 18px;
+    padding: 10px 22px;
     background: rgba(251, 191, 36, 0.05);
     border: 1px solid rgba(251, 191, 36, 0.2);
     color: var(--color-accent-yellow);
     border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 1.8px;
     margin-top: 8px; 
     margin-bottom: 24px;
     backdrop-filter: blur(8px);
@@ -130,7 +130,7 @@ body {
     display: block;
     font-family: var(--font-body);
     font-weight: 800;
-    font-size: clamp(2rem, 6vw, 3rem);
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
     color: var(--color-primary);
     line-height: 1.1;
     margin-bottom: 32px;
@@ -146,7 +146,7 @@ body {
 }
 
 .subtitle {
-    font-size: 1.25rem; /* Increased from 1.1rem */
+    font-size: 1.35rem;
     color: #cbd5e1;
     max-width: 600px; /* Increased from 500px to allow more text per line */
     margin-bottom: 32px;
@@ -155,7 +155,7 @@ body {
 }
 
 .hero-brand-logo {
-    height: 48px;
+    height: 72px;
     width: auto;
     filter: brightness(0) invert(1) opacity(0.8);
     display: block;
@@ -170,11 +170,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 4px;
 }
 
 .venue-name {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--color-white);
     letter-spacing: 2px;
@@ -667,9 +667,9 @@ footer p {
         margin-bottom: 20px;
     }
     .date-badge {
-        font-size: 0.65rem;
-        padding: 6px 12px;
-        letter-spacing: 1px;
+        font-size: 1rem;
+        padding: 10px 20px;
+        letter-spacing: 1.5px;
     }
     .form-row { grid-template-columns: 1fr; }
     .glass-card { padding: 30px 20px; }
