@@ -169,12 +169,12 @@ body {
 .brand-group, .footer-brand-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 4px;
 }
 
 .venue-name {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--color-white);
     letter-spacing: 2px;
