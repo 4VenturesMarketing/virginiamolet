@@ -99,21 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (form && floatingCta) {
+    if (floatingCta) {
         const contactSection = document.getElementById('contacto');
         
         // Use Intersection Observer to hide/show based on form or contact visibility
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Hide if form or contact section is visible
                     floatingCta.classList.remove('active');
                 } else {
-                    // Only show if we're scrolled down and neither is visible
-                    const rectForm = form.getBoundingClientRect();
+                    const rectForm = form ? form.getBoundingClientRect() : null;
                     const rectContact = contactSection ? contactSection.getBoundingClientRect() : null;
                     
-                    const isFormVisible = rectForm.top < window.innerHeight && rectForm.bottom > 0;
+                    const isFormVisible = rectForm ? (rectForm.top < window.innerHeight && rectForm.bottom > 0) : false;
                     const isContactVisible = rectContact ? (rectContact.top < window.innerHeight && rectContact.bottom > 0) : false;
 
                     if (window.scrollY > 400 && !isFormVisible && !isContactVisible) {
@@ -123,15 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.1 });
 
-        observer.observe(form);
+        if (form) observer.observe(form);
         if (contactSection) observer.observe(contactSection);
 
         // Simple scroll behavior
         window.addEventListener('scroll', () => {
-            const rectForm = form.getBoundingClientRect();
+            const rectForm = form ? form.getBoundingClientRect() : null;
             const rectContact = contactSection ? contactSection.getBoundingClientRect() : null;
             
-            const isFormVisible = rectForm.top < window.innerHeight && rectForm.bottom > 0;
+            const isFormVisible = rectForm ? (rectForm.top < window.innerHeight && rectForm.bottom > 0) : false;
             const isContactVisible = rectContact ? (rectContact.top < window.innerHeight && rectContact.bottom > 0) : false;
             
             const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
@@ -143,10 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Smooth scroll to form
+        // Click behavior
         floatingCta.addEventListener('click', (e) => {
-            e.preventDefault();
-            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (form) {
+                e.preventDefault();
+                form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            // If no form, let the default <a> behavior link to index.html#inscription-form
         });
     }
 });
