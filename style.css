@@ -261,6 +261,11 @@ body {
     font-size: 0.9rem;
 }
 
+/* Utilities */
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+
+
 /* Responsive Menu */
 @media (max-width: 992px) {
     .nav-menu {
@@ -854,6 +859,8 @@ footer {
     color: rgba(255, 255, 255, 0.2);
     font-size: 0.8rem;
 }
+
+.mb-8 { margin-bottom: 2rem; }
 
 @media (max-width: 768px) {
     .footer-bottom {
