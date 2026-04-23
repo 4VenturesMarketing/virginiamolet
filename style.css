@@ -65,7 +65,6 @@ body {
 
 .nav-brand .nav-logo {
     height: 35px;
-    filter: brightness(0) invert(1);
 }
 
 .nav-menu ul {
@@ -816,12 +815,12 @@ footer {
 .footer-logo {
     height: 45px;
     width: auto;
-    filter: opacity(0.5) brightness(0) invert(1);
+    filter: opacity(0.5);
     transition: var(--transition);
 }
 
 .footer-logo:hover {
-    filter: opacity(1) brightness(0) invert(1);
+    filter: opacity(1);
 }
 
 .footer-bottom {
