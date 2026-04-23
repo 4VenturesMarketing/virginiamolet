@@ -100,13 +100,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (form && floatingCta) {
-        // Use Intersection Observer to hide/show based on form visibility
+        const contactSection = document.getElementById('contacto');
+        
+        // Use Intersection Observer to hide/show based on form or contact visibility
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Hide if form or contact section is visible
                     floatingCta.classList.remove('active');
                 } else {
-                    if (window.scrollY > 400) {
+                    // Only show if we're scrolled down and neither is visible
+                    const rectForm = form.getBoundingClientRect();
+                    const rectContact = contactSection ? contactSection.getBoundingClientRect() : null;
+                    
+                    const isFormVisible = rectForm.top < window.innerHeight && rectForm.bottom > 0;
+                    const isContactVisible = rectContact ? (rectContact.top < window.innerHeight && rectContact.bottom > 0) : false;
+
+                    if (window.scrollY > 400 && !isFormVisible && !isContactVisible) {
                         floatingCta.classList.add('active');
                     }
                 }
@@ -114,14 +124,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.1 });
 
         observer.observe(form);
+        if (contactSection) observer.observe(contactSection);
 
         // Simple scroll behavior
         window.addEventListener('scroll', () => {
-            const rect = form.getBoundingClientRect();
-            const isFormVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+            const rectForm = form.getBoundingClientRect();
+            const rectContact = contactSection ? contactSection.getBoundingClientRect() : null;
             
-            if (window.scrollY > 50 && !isFormVisible && !isBottom) {
+            const isFormVisible = rectForm.top < window.innerHeight && rectForm.bottom > 0;
+            const isContactVisible = rectContact ? (rectContact.top < window.innerHeight && rectContact.bottom > 0) : false;
+            
+            const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+            
+            if (window.scrollY > 400 && !isFormVisible && !isContactVisible && !isBottom) {
                 floatingCta.classList.add('active');
             } else {
                 floatingCta.classList.remove('active');
