@@ -1090,4 +1090,86 @@ footer p {
     }
 }
 
+/* Organiza Page Styles */
+.organiza-hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(180deg, var(--color-darker) 0%, var(--color-dark) 100%);
+}
+
+.organiza-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.organiza-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    color: var(--color-white);
+}
+
+.organiza-content p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+.organiza-visual-stack {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.virginia-photo-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.virginia-photo-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.aoec-logo-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+    margin-left: auto;
+    margin-top: -60px;
+    position: relative;
+    z-index: 2;
+}
+
+.aoec-logo-card img {
+    max-width: 100%;
+    height: auto;
+    filter: brightness(0) invert(1); /* Ensure it's white if it's a dark logo */
+}
+
+@media (max-width: 992px) {
+    .organiza-main-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .aoec-logo-card {
+        margin: -40px auto 0;
+    }
+}
+
+
 
