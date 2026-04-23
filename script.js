@@ -1,18 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('inscription-form');
-    const submitBtn = document.getElementById('submitBtn');
-    const spinner = submitBtn.querySelector('.spinner');
-    const btnText = submitBtn.querySelector('span');
-    const successMsg = document.getElementById('successMsg');
+    // --- Mobile Menu Toggle (Always enabled) ---
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
 
-    if(form) {
+    if (menuToggle && navMenu) {
+        const navLinks = navMenu.querySelectorAll('a');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
+
+    // --- Form & Floating CTA Logic (Page-specific) ---
+    const form = document.getElementById('inscription-form');
+    const floatingCta = document.getElementById('floatingCta');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (form && submitBtn) {
+        const spinner = submitBtn.querySelector('.spinner');
+        const btnText = submitBtn.querySelector('span');
+
         // Form Submission Logic
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             // Show loading state
-            btnText.classList.add('hidden');
-            spinner.classList.remove('hidden');
+            if (btnText) btnText.classList.add('hidden');
+            if (spinner) spinner.classList.remove('hidden');
             submitBtn.disabled = true;
             
             // Collect data
@@ -29,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // Send directly to Zapier using form-urlencoded (avoids most CORS issues)
+                // Send directly to Zapier
                 const zapierParams = new URLSearchParams();
                 zapierParams.append('nombre', data.nombre);
                 zapierParams.append('apellido', data.apellido);
@@ -60,22 +92,20 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 console.error(err);
                 alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
-                btnText.classList.remove('hidden');
-                spinner.classList.add('hidden');
+                if (btnText) btnText.classList.remove('hidden');
+                if (spinner) spinner.classList.add('hidden');
                 submitBtn.disabled = false;
             }
         });
+    }
 
-        // Floating CTA Logic
-        const floatingCta = document.getElementById('floatingCta');
-        
+    if (form && floatingCta) {
         // Use Intersection Observer to hide/show based on form visibility
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     floatingCta.classList.remove('active');
                 } else {
-                    // Show if we scrolled past the hero or form
                     if (window.scrollY > 400) {
                         floatingCta.classList.add('active');
                     }
@@ -85,13 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(form);
 
-        // Simple scroll behavior as fallback/addition
+        // Simple scroll behavior
         window.addEventListener('scroll', () => {
             const rect = form.getBoundingClientRect();
             const isFormVisible = rect.top < window.innerHeight && rect.bottom > 0;
             const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
             
-            // Show when user scrolls down at least 50px, but hide if form is visible or at bottom
             if (window.scrollY > 50 && !isFormVisible && !isBottom) {
                 floatingCta.classList.add('active');
             } else {
@@ -103,26 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         floatingCta.addEventListener('click', (e) => {
             e.preventDefault();
             form.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    }
-
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = navMenu.querySelectorAll('a');
-
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
         });
     }
 });
