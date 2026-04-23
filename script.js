@@ -101,43 +101,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (floatingCta) {
         const contactSection = document.getElementById('contacto');
-        
-        // Use Intersection Observer to hide/show based on form or contact visibility
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    floatingCta.classList.remove('active');
-                } else {
-                    const rectForm = form ? form.getBoundingClientRect() : null;
-                    const rectContact = contactSection ? contactSection.getBoundingClientRect() : null;
-                    
-                    const isFormVisible = rectForm ? (rectForm.top < window.innerHeight && rectForm.bottom > 0) : false;
-                    const isContactVisible = rectContact ? (rectContact.top < window.innerHeight && rectContact.bottom > 0) : false;
 
-                    if (window.scrollY > 400 && !isFormVisible && !isContactVisible) {
-                        floatingCta.classList.add('active');
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
+        // Helper: check if an element is currently in the viewport
+        const isVisible = (el) => {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            return rect.top < window.innerHeight && rect.bottom > 0;
+        };
 
-        if (form) observer.observe(form);
-        if (contactSection) observer.observe(contactSection);
+        // Helper: should the CTA be shown?
+        const shouldShow = () => {
+            const scrolledEnough = window.scrollY > 400;
+            const formVisible    = isVisible(form);
+            const contactVisible = isVisible(contactSection);
+            const atBottom       = window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
+            return scrolledEnough && !formVisible && !contactVisible && !atBottom;
+        };
 
-        // Simple scroll behavior
-        window.addEventListener('scroll', () => {
-            const rectForm = form ? form.getBoundingClientRect() : null;
-            const rectContact = contactSection ? contactSection.getBoundingClientRect() : null;
-            
-            const isFormVisible = rectForm ? (rectForm.top < window.innerHeight && rectForm.bottom > 0) : false;
-            const isContactVisible = rectContact ? (rectContact.top < window.innerHeight && rectContact.bottom > 0) : false;
-            
-            const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
-            
-            if (window.scrollY > 400 && !isFormVisible && !isContactVisible && !isBottom) {
+        const updateCta = () => {
+            if (shouldShow()) {
                 floatingCta.classList.add('active');
             } else {
                 floatingCta.classList.remove('active');
+            }
+        };
+
+        // Scroll listener (throttled with requestAnimationFrame for performance)
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateCta();
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
 
