@@ -922,3 +922,139 @@ footer p {
     .section-title { font-size: 2rem; }
     .text-logo-img { max-width: 100%; }
 }
+
+/* Agenda Page Styles */
+.agenda-hero {
+    padding: 120px 0 60px;
+    background: linear-gradient(180deg, var(--color-darker) 0%, var(--color-dark) 100%);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    margin-top: 40px;
+    align-items: start;
+}
+
+.intro-text p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.intro-text ul {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.intro-text ul li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+.intro-text ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+.speakers-section {
+    padding: 80px 0;
+    background: var(--color-darker);
+}
+
+.speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.speaker-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.speaker-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-primary);
+}
+
+.schedule-section {
+    padding: 80px 0 120px;
+    background: var(--color-dark);
+}
+
+.schedule-table-container {
+    margin-top: 50px;
+    overflow-x: auto;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.schedule-table th {
+    background: rgba(0, 152, 214, 0.1);
+    color: var(--color-primary);
+    text-align: left;
+    padding: 20px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.schedule-table td {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+.schedule-table tr:last-child td {
+    border-bottom: none;
+}
+
+.schedule-table .time-cell {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-accent-yellow);
+    white-space: nowrap;
+    width: 150px;
+}
+
+.schedule-table .topic-cell {
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.schedule-table .presenter-cell {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 992px) {
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
