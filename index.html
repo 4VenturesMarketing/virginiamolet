@@ -213,11 +213,15 @@
                         </div>
                     </div>
                     <div class="contacto-form-mini">
-                        <p class="text-sm opacity-70 mb-4">¿Tienes alguna duda específica? Escríbenos:</p>
+                        <p class="text-sm opacity-70 mb-6">¿Tienes alguna duda específica? Escríbenos:</p>
                         <form class="mini-form">
                             <input type="text" placeholder="Nombre" required>
                             <input type="email" placeholder="Email" required>
                             <textarea placeholder="Tu mensaje" rows="3" required></textarea>
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="legal-contacto" name="legal" required>
+                                <label for="legal-contacto" class="legal-text">He leído y acepto la <a href="politica-de-privacidad.html" target="_blank">Política de Privacidad</a>.</label>
+                            </div>
                             <button type="submit" class="submit-btn small">Enviar Mensaje</button>
                         </form>
                     </div>
