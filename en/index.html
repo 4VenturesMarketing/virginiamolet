@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I International Executive Coaching Salon | June 12th, Madrid</title>
+    <meta name="description" content="Register for the I International Executive Coaching Salon in Spain this June 12th from 10:00 to 19:00 h at the Movistar Arena in Madrid with experts like John Leary-Joyce and Juan Carlos Cubeiro.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <img src="../assets/logo-movistar-arena.png" alt="Virginia Molet Logo" class="nav-logo">
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#agenda">Agenda</a></li>
+                    <li><a href="#organiza">Organizer</a></li>
+                    <li><a href="#registro">Register</a></li>
+                    <li><a href="#contacto">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <a href="../index.html">ES</a> | <span class="active">EN</span>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="../assets/movistar-arena-exterior.jpg" alt="Movistar Arena Exterior" class="bg-image">
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 class="main-title">I International<br>Executive Coaching<br>Salon in Spain</h1>
+                    <span class="date-badge">JUNE 12th • 10:00 - 19:00 h • MADRID</span>
+                    <p class="subtitle">The meeting point in Spain for professionals who want to make a real leap in leadership and advance their professional career.<br><br>A selective environment connecting executive development, corporate coaching, and technology applied to talent. With the <strong>participation of industry leaders such as John Leary-Joyce and Juan Carlos Cubeiro.</strong></p>
+                    <div class="brand-group">
+                        <img src="../assets/logo-movistar-arena.png" alt="Movistar Arena Madrid" class="hero-brand-logo">
+                        <span class="venue-name">Truss Room</span>
+                    </div>
+                </div>
+
+                <div class="form-wrapper" id="registro">
+                    <div class="glass-card">
+                        <h2>Reserve Your Spot</h2>
+                        <p>Limited availability. Register now to secure your attendance.</p>
+                        
+                        <form id="inscription-form" class="event-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nombre">First Name</label>
+                                    <input type="text" id="nombre" name="nombre" required placeholder="Your name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Last Name</label>
+                                    <input type="text" id="apellido" name="apellido" required placeholder="Your last name">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefono">Phone Number</label>
+                                <div class="phone-input">
+                                    <select id="codigo-pais" name="codigo-pais" class="country-code">
+                                        <option value="+34">🇪🇸 +34 (Spain)</option>
+                                        <option value="+1">🇺🇸 +1 (USA/Canada)</option>
+                                        <option value="+44">🇬🇧 +44 (UK)</option>
+                                        <option value="+1">🌍 Other</option>
+                                    </select>
+                                    <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+                                </div>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="legal" name="legal" required>
+                                <label for="legal" class="legal-text">I have read and accept the <a href="../politica-de-privacidad.html" target="_blank">Privacy Policy</a>.</label>
+                            </div>
+
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span>Register for the Event</span>
+                                <div class="spinner hidden"></div>
+                            </button>
+                            <div class="success-msg hidden" id="successMsg">Thank you for registering! We will contact you soon with your access details.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Agenda -->
+        <section id="agenda" class="agenda-section">
+            <div class="container">
+                <h2 class="section-title text-center">Event Agenda</h2>
+                <div class="agenda-timeline">
+                    <div class="timeline-item">
+                        <div class="time">10:00</div>
+                        <div class="content">
+                            <h3>Opening and Welcome</h3>
+                            <p>Attendee registration and welcome coffee at Truss Room.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">11:30</div>
+                        <div class="content">
+                            <h3>Keynote: The Future of Coaching</h3>
+                            <p>Masterclass by international industry referents.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">14:00</div>
+                        <div class="content">
+                            <h3>Networking Lunch</h3>
+                            <p>Selective space to connect with leaders and executives.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">16:30</div>
+                        <div class="content">
+                            <h3>Discussion Panels</h3>
+                            <p>Practical cases and technology applied to executive talent.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">18:30</div>
+                        <div class="content">
+                            <h3>Closing</h3>
+                            <p>Conclusions and closure of the I International Salon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Organizer -->
+        <section id="organiza" class="organiza-section">
+            <div class="container organiza-grid">
+                <div class="organiza-text">
+                    <h2 class="section-title">About the Organization</h2>
+                    <p>The I International Executive Coaching Salon is an initiative led by Virginia Molet, aimed at raising the standards of professional coaching in Spain and creating a bridge with global leadership trends.</p>
+                    <p>We have the support of top-tier academic and corporate institutions to ensure an unprecedented learning and networking experience.</p>
+                </div>
+                <div class="organiza-visual">
+                    <div class="glass-card mini">
+                        <h3>Virginia Molet</h3>
+                        <p class="text-agencia-accent">Founder and Organizer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Contact -->
+        <section id="contacto" class="contacto-section">
+            <div class="container">
+                <h2 class="section-title text-center">Contact</h2>
+                <div class="contacto-grid">
+                    <div class="contacto-info">
+                        <div class="info-item">
+                            <span class="icon">📧</span>
+                            <p>hello@saloncoachingejecutivo.com</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <p>Truss Room, Movistar Arena, Madrid</p>
+                        </div>
+                    </div>
+                    <div class="contacto-form-mini">
+                        <p class="text-sm opacity-70 mb-4">Any specific questions? Write to us:</p>
+                        <form class="mini-form">
+                            <input type="text" placeholder="Name" required>
+                            <input type="email" placeholder="Email" required>
+                            <textarea placeholder="Your message" rows="3" required></textarea>
+                            <button type="submit" class="submit-btn small">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand-group">
+                <img src="../assets/logo-movistar-arena.png" alt="Movistar Arena" class="footer-logo">
+                <span class="venue-name small">Truss Room</span>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 I International Executive Coaching Salon in Spain. All rights reserved.</p>
+                <div class="footer-links">
+                    <span class="separator">•</span>
+                    <a href="../politica-de-privacidad.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#inscription-form" class="floating-cta" id="floatingCta">Register for the Event</a>
+
+    <script src="../script.js"></script>
+</body>
+</html>

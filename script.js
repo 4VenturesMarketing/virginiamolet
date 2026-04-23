@@ -105,4 +105,24 @@ document.addEventListener('DOMContentLoaded', () => {
             form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     }
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = navMenu.querySelectorAll('a');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
 });
