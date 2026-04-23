@@ -828,6 +828,34 @@ footer {
     filter: opacity(1);
 }
 
+.footer-info-details {
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-info-details p {
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.footer-info-details a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-info-details a:hover {
+    text-decoration: underline;
+}
+
+.footer-info-details strong {
+    color: var(--color-accent-yellow);
+    font-weight: 600;
+}
+
+
 .footer-bottom {
     display: flex;
     flex-wrap: wrap;
