@@ -16,13 +16,12 @@
 
 html {
     scroll-behavior: smooth;
-    box-sizing: border-box;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .subtitle strong {
@@ -36,7 +35,6 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     overflow-x: hidden;
-    width: 100%;
 }
 
 .container {
@@ -63,17 +61,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 40px;
-}
-
-.nav-brand {
-    display: none !important;
-    align-items: center;
 }
 
 .nav-brand .nav-logo {
-    height: 30px;
-    width: auto;
+    height: 35px;
 }
 
 .nav-menu ul {
@@ -277,42 +268,21 @@ body {
 
 /* Responsive Menu */
 @media (max-width: 992px) {
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .nav-container {
-        min-height: 50px;
-    }
-
-    .nav-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .lang-switcher {
-        font-size: 1rem;
-    }
-
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 65px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 70px);
         background: var(--color-darker);
         padding: 40px;
-        transform: translateX(100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 2000;
-        border-bottom: none;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        z-index: 999;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav-menu.active {
-        transform: translateX(0);
+        transform: translateY(0);
     }
 
     .nav-menu ul {
@@ -1194,7 +1164,7 @@ footer::before {
 }
 
 /* Mobile: Schedule table → stacked cards */
-@media (max-width: 640px) {
+@media (max-width: 992px) {
     .schedule-table-container {
         overflow-x: visible;
     }
@@ -1222,12 +1192,9 @@ footer::before {
     }
 
     .schedule-table td {
-        padding: 8px 0;
+        padding: 4px 0;
         border-bottom: none;
         font-size: 0.95rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
     }
 
     .schedule-table .time-cell {
