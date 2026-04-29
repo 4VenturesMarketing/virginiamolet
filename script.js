@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Mobile Menu Toggle (Always enabled) ---
+    // --- Mobile Menu Toggle ---
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Form & Floating CTA Logic (Page-specific) ---
+    // --- Form & Floating CTA Logic ---
     const form = document.getElementById('inscription-form');
     const floatingCta = document.getElementById('floatingCta');
     const submitBtn = document.getElementById('submitBtn');
@@ -38,16 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const spinner = submitBtn.querySelector('.spinner');
         const btnText = submitBtn.querySelector('span');
 
-        // Form Submission Logic
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Show loading state
             if (btnText) btnText.classList.add('hidden');
             if (spinner) spinner.classList.remove('hidden');
             submitBtn.disabled = true;
             
-            // Collect data
             const formData = new FormData(form);
             const fullPhone = `${formData.get('codigo-pais')}${formData.get('telefono')}`;
             
@@ -61,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // Send directly to Zapier
+                // Send to Zapier
                 const zapierParams = new URLSearchParams();
                 zapierParams.append('nombre', data.nombre);
                 zapierParams.append('apellido', data.apellido);
@@ -84,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) throw new Error('Error en el envío');
 
-                // Redirect to thank you page
                 setTimeout(() => {
                     window.location.href = 'gracias.html';
                 }, 500);
@@ -102,14 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (floatingCta) {
         const contactSection = document.getElementById('contacto');
 
-        // Helper: check if an element is currently in the viewport
         const isVisible = (el) => {
             if (!el) return false;
             const rect = el.getBoundingClientRect();
             return rect.top < window.innerHeight && rect.bottom > 0;
         };
 
-        // Helper: should the CTA be shown?
         const shouldShow = () => {
             const scrolledEnough = window.scrollY > 400;
             const formVisible    = isVisible(form);
@@ -126,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Scroll listener (throttled with requestAnimationFrame for performance)
         let ticking = false;
         window.addEventListener('scroll', () => {
             if (!ticking) {
@@ -138,13 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Click behavior
         floatingCta.addEventListener('click', (e) => {
             if (form) {
                 e.preventDefault();
                 form.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-            // If no form, let the default <a> behavior link to index.html#inscription-form
         });
     }
 });
