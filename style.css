@@ -35,6 +35,7 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     overflow-x: hidden;
+    width: 100%;
 }
 
 .container {
@@ -1220,9 +1221,12 @@ footer::before {
     }
 
     .schedule-table td {
-        padding: 4px 0;
+        padding: 8px 0;
         border-bottom: none;
         font-size: 0.95rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
     }
 
     .schedule-table .time-cell {
