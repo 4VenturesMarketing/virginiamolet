@@ -408,7 +408,7 @@ body {
 
 .hero-brand-logo {
     height: 100px;
-    width: auto;
+    flex-wrap: wrap;    width: auto;
     filter: brightness(0) invert(1);
     display: block;
     transition: var(--transition);
@@ -1192,9 +1192,12 @@ footer::before {
     }
 
     .schedule-table td {
-        padding: 4px 0;
+        padding: 10px 0;
         border-bottom: none;
         font-size: 0.95rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
     }
 
     .schedule-table .time-cell {
