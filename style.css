@@ -283,6 +283,15 @@ body {
         min-height: 50px;
     }
 
+    .nav-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .lang-switcher {
+        font-size: 1rem;
+    }
+
     .nav-menu {
         position: fixed;
         top: 70px;
