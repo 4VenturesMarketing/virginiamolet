@@ -1176,6 +1176,7 @@ footer::before {
     .schedule-table td,
     .schedule-table tr {
         display: block;
+        min-width: unset; /* Critical: Remove the 600px min-width that causes overflow */
     }
 
     .schedule-table thead {
