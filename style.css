@@ -61,10 +61,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 40px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
 }
 
 .nav-brand .nav-logo {
-    height: 35px;
+    height: 30px;
+    width: auto;
 }
 
 .nav-menu ul {
@@ -268,21 +275,33 @@ body {
 
 /* Responsive Menu */
 @media (max-width: 992px) {
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .nav-container {
+        min-height: 50px;
+    }
+
     .nav-menu {
         position: fixed;
-        top: 65px;
+        top: 70px;
         left: 0;
         width: 100%;
+        height: calc(100vh - 70px);
         background: var(--color-darker);
         padding: 40px;
-        transform: translateY(-150%);
-        transition: transform 0.4s ease;
-        z-index: 999;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2000;
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     .nav-menu ul {
