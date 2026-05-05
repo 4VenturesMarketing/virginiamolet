@@ -197,6 +197,17 @@ body {
     align-items: center;
 }
 
+.organiza-single {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.organiza-single .organiza-text p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .organiza-visual {
     display: flex;
     justify-content: center;
