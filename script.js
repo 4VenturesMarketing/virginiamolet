@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 zapierParams.append('apellido', data.apellido);
                 zapierParams.append('email', data.email);
                 zapierParams.append('telefono', data.telefono);
-                zapierParams.append('etiqueta', 'salón');
+                const isEn = window.location.pathname.includes('/en/');
+                zapierParams.append('etiqueta', isEn ? 'salon_en' : 'salón');
 
                 fetch('https://hooks.zapier.com/hooks/catch/13513217/u7m4eoq/', {
                     method: 'POST',
