@@ -86,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Redirect to thank you page
                 setTimeout(() => {
-                    window.location.href = 'gracias.html';
+                    const isEn = window.location.pathname.includes('/en/');
+                    window.location.href = isEn ? 'thanks.html' : 'gracias.html';
                 }, 500);
 
             } catch (err) {
