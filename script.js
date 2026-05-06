@@ -67,7 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 zapierParams.append('apellido', data.apellido);
                 zapierParams.append('email', data.email);
                 zapierParams.append('telefono', data.telefono);
-                    const isEn = document.documentElement.lang === 'en' || window.location.pathname.includes('/en');
+                const lang = (document.documentElement.lang || '').toLowerCase();
+                const path = (window.location.pathname || '').toLowerCase();
+                const isEn = lang.startsWith('en') || path.includes('/en');
                 zapierParams.append('etiqueta', isEn ? 'salon_en' : 'salón');
 
                 fetch('https://hooks.zapier.com/hooks/catch/13513217/u7m4eoq/', {
@@ -87,8 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Redirect to thank you page
                 setTimeout(() => {
-                        const isEn = document.documentElement.lang === 'en' || window.location.pathname.includes('/en');
-                    window.location.href = isEn ? 'thanks.html' : 'gracias.html';
+                    const lang = (document.documentElement.lang || '').toLowerCase();
+                    const path = (window.location.pathname || '').toLowerCase();
+                    const isEn = lang.startsWith('en') || path.includes('/en');
+                    
+                    if (isEn) {
+                        window.location.href = '/en/thanks.html';
+                    } else {
+                        window.location.href = '/gracias.html';
+                    }
                 }, 500);
 
             } catch (err) {
