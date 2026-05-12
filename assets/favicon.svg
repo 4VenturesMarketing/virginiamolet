@@ -1,19 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <defs>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#E5C158" />
-      <stop offset="50%" stop-color="#D4AF37" />
       <stop offset="100%" stop-color="#B38B22" />
     </linearGradient>
   </defs>
-
-  <!-- Fondo cuadrado azul marino -->
-  <rect width="32" height="32" fill="#0B2341" rx="4" />
-
-  <!-- Letra S -->
-  <text x="2" y="25" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="#FFFFFF">S</text>
-  <!-- Letra I en dorado -->
-  <text x="11" y="25" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="url(#goldGrad)">I</text>
-  <!-- Letras CE -->
-  <text x="16" y="25" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="#FFFFFF">CE</text>
+  <!-- Compass Icon for Favicon -->
+  <path d="M16 2 L18 14 L30 16 L18 18 L16 30 L14 18 L2 16 L14 14 Z" fill="url(#gold)" />
+  <circle cx="16" cy="16" r="2" fill="#0B2341" />
 </svg>

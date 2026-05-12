@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="800" height="350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&amp;display=swap');
+      .title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 150px;
+        fill: #0B2341;
+        letter-spacing: 15px;
+      }
+      .subtitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        fill: #0B2341;
+        letter-spacing: 7px;
+      }
+    </style>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C158" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#B38B22" />
+    </linearGradient>
+  </defs>
+
+  <!-- Text: S ICE -->
+  <text x="400" y="180" class="title" text-anchor="middle">
+    <tspan>S</tspan>
+    <tspan fill="transparent">I</tspan>
+    <tspan>CE</tspan>
+  </text>
+
+  <!-- Compass Integrated in "I" position -->
+  <g transform="translate(385, 95) scale(1.1)">
+    <!-- Base Vertical Column of I -->
+    <rect x="-10" y="25" width="20" height="90" fill="url(#goldGradient)" rx="2" />
+    
+    <!-- Compass Rose / North Star -->
+    <g transform="translate(0, 10)">
+      <!-- Main Cross -->
+      <path d="M0 -45 L8 -8 L45 0 L8 8 L0 45 L-8 8 L-45 0 L-8 -8 Z" fill="url(#goldGradient)" />
+      <!-- Secondary Cross (Diagonal) -->
+      <path d="M0 -25 L5 -5 L25 0 L5 5 L0 25 L-5 5 L-25 0 L-5 -5 Z" fill="url(#goldGradient)" opacity="0.7" transform="rotate(45)" />
+      <!-- Center Point -->
+      <circle cx="0" cy="0" r="4" fill="#0B2341" />
+    </g>
+  </g>
+  
+  <line x1="150" y1="230" x2="650" y2="230" stroke="url(#goldGradient)" stroke-width="3" />
+  
+  <text x="400" y="275" class="subtitle" text-anchor="middle">I SALÓN INTERNACIONAL</text>
+  <text x="400" y="310" class="subtitle" text-anchor="middle">DE COACHING EJECUTIVO</text>
+</svg>
