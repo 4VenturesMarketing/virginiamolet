@@ -1,4 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <rect width="32" height="32" rx="6" fill="#0ea5e9"/>
-    <text x="50%" y="50%" text-anchor="middle" dy=".35em" fill="white" font-family="'Raleway', sans-serif" font-weight="900" font-size="20">S</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C158" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#B38B22" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo cuadrado azul marino -->
+  <rect width="32" height="32" fill="#0B2341" rx="4" />
+
+  <!-- Letra S -->
+  <text x="2" y="25" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="#FFFFFF">S</text>
+  <!-- Letra I en dorado -->
+  <text x="11" y="25" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="url(#goldGrad)">I</text>
+  <!-- Letras CE -->
+  <text x="16" y="25" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="#FFFFFF">CE</text>
 </svg>
