@@ -64,12 +64,11 @@ body {
 }
 
 .nav-brand {
-    display: block;
+    display: none;
 }
 
 .nav-brand .nav-logo {
-    height: 45px;
-    width: auto;
+    height: 35px;
 }
 
 .nav-menu ul {
@@ -400,16 +399,6 @@ body {
 .date-badge:hover {
     background: rgba(251, 191, 36, 0.1);
     border-color: var(--color-accent-yellow);
-}
-
-.hero-brand-isotype {
-    margin-bottom: 24px;
-}
-
-.hero-logo-svg {
-    height: 100px;
-    width: auto;
-    filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5));
 }
 
 /* Fallback image if main title isn't used */
