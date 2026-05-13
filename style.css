@@ -50,7 +50,7 @@ body {
     width: 100%;
     padding: 15px 0;
     z-index: 1000;
-    background: rgba(10, 14, 23, 0.7);
+    background: #000000;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -828,7 +828,7 @@ input::placeholder {
 
 /* Footer */
 footer {
-    background: #05070a;
+    background: #000000;
     padding: 80px 0 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
