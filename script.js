@@ -130,14 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
             contactSubmitBtn.disabled = true;
 
             const formData = new FormData(contactForm);
+            const lang = (document.documentElement.lang || '').toLowerCase();
+            const path = (window.location.pathname || '').toLowerCase();
+            const isEn = lang.startsWith('en') || path.includes('/en');
+
             const data = {
                 nombre: formData.get('nombre'),
                 email: formData.get('email'),
                 mensaje: formData.get('mensaje'),
                 legal: formData.get('legal') === 'on',
                 type: 'contact',
+                etiqueta: isEn ? 'salon_contacto_en' : 'salon_contacto_es',
                 source: window.location.hostname
             };
+
+            const successMsg = document.getElementById('contactSuccess');
 
             try {
                 const controller = new AbortController();
@@ -154,19 +161,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) throw new Error('Error en el envío');
 
                 // Show success feedback
-                if (contactBtnText) contactBtnText.innerText = 'Sent Successfully!';
-                if (contactBtnText) contactBtnText.classList.remove('hidden');
+                if (successMsg) {
+                    successMsg.innerText = isEn ? 'Message sent' : 'Mensaje enviado';
+                    successMsg.classList.remove('hidden');
+                }
+                
                 if (contactSpinner) contactSpinner.classList.add('hidden');
+                if (contactBtnText) {
+                    contactBtnText.innerText = isEn ? 'Sent!' : '¡Enviado!';
+                    contactBtnText.classList.remove('hidden');
+                }
                 
                 contactForm.reset();
                 setTimeout(() => {
-                    if (contactBtnText) contactBtnText.innerText = 'Send Message';
+                    if (contactBtnText) contactBtnText.innerText = isEn ? 'Send Message' : 'Enviar Mensaje';
                     contactSubmitBtn.disabled = false;
                 }, 3000);
 
             } catch (err) {
                 console.error(err);
-                alert('There was an error sending your message. Please try again.');
+                alert(isEn ? 'There was an error sending your message. Please try again.' : 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
                 if (contactBtnText) contactBtnText.classList.remove('hidden');
                 if (contactSpinner) contactSpinner.classList.add('hidden');
                 contactSubmitBtn.disabled = false;
