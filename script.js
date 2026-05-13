@@ -110,6 +110,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Contact Form Logic ---
+    const contactForm = document.getElementById('contact-form');
+    const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+
+    if (contactForm && contactSubmitBtn) {
+        const contactSpinner = contactSubmitBtn.querySelector('.spinner');
+        const contactBtnText = contactSubmitBtn.querySelector('span');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Show loading state
+            if (contactBtnText) contactBtnText.classList.add('hidden');
+            if (contactSpinner) contactSpinner.classList.remove('hidden');
+            contactSubmitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+            const data = {
+                nombre: formData.get('nombre'),
+                email: formData.get('email'),
+                mensaje: formData.get('mensaje'),
+                legal: formData.get('legal') === 'on',
+                type: 'contact',
+                source: window.location.hostname
+            };
+
+            try {
+                const response = await fetch('https://n8n.4ventures.es/webhook/virginia-molet-coaching', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error('Error en el envío');
+
+                // Show success feedback
+                if (contactBtnText) contactBtnText.innerText = 'Sent Successfully!';
+                if (contactBtnText) contactBtnText.classList.remove('hidden');
+                if (contactSpinner) contactSpinner.classList.add('hidden');
+                
+                contactForm.reset();
+                setTimeout(() => {
+                    if (contactBtnText) contactBtnText.innerText = 'Send Message';
+                    contactSubmitBtn.disabled = false;
+                }, 3000);
+
+            } catch (err) {
+                console.error(err);
+                alert('There was an error sending your message. Please try again.');
+                if (contactBtnText) contactBtnText.classList.remove('hidden');
+                if (contactSpinner) contactSpinner.classList.add('hidden');
+                contactSubmitBtn.disabled = false;
+            }
+        });
+    }
+
     if (floatingCta) {
         const contactSection = document.getElementById('contacto');
 

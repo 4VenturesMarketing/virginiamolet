@@ -157,14 +157,17 @@
                     <div class="contacto-form-mini">
                         <p class="text-sm opacity-70 mb-6">Any specific questions?</p>
                         <form class="mini-form" id="contact-form">
-                            <input type="text" placeholder="Name" required>
-                            <input type="email" placeholder="Email" required>
-                            <textarea placeholder="Your message" rows="3" required></textarea>
+                            <input type="text" name="nombre" placeholder="Name" required>
+                            <input type="email" name="email" placeholder="Email" required>
+                            <textarea name="mensaje" placeholder="Your message" rows="3" required></textarea>
                             <div class="form-group checkbox-group">
                                 <input type="checkbox" id="legal-contacto-en" name="legal" required>
                                 <label for="legal-contacto-en" class="legal-text">I have read and accept the <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.</label>
                             </div>
-                            <button type="submit" class="submit-btn small">Send Message</button>
+                            <button type="submit" class="submit-btn small" id="contactSubmitBtn">
+                                <span>Send Message</span>
+                                <div class="spinner hidden"></div>
+                            </button>
                         </form>
                     </div>
                 </div>
