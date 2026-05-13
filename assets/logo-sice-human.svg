@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;display=swap');
+      .title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 135px;
+        fill: #0B2341;
+      }
+      .subtitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 26px;
+        fill: #0B2341;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </defs>
+
+  <!-- Logo Symbol -->
+  <g transform="translate(150, 100)" fill="none" stroke="#0B2341" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Head -->
+    <circle cx="85" cy="40" r="22" stroke-width="14" />
+    
+    <!-- Human/Path Figure -->
+    <!-- The "J" and arms structure -->
+    <path d="M20 120 C 40 120, 100 80, 160 40" /> <!-- Right Arm -->
+    <path d="M20 180 C 40 180, 80 180, 110 130 C 120 100, 110 50, 85 80 C 70 110, 85 180, 110 220" /> <!-- Main Spine -->
+    <path d="M40 140 C 60 140, 100 130, 150 220" /> <!-- Left Leg/Curve -->
+    
+    <!-- Base Leaf/Loop (Filled) -->
+    <path d="M85 220 C 60 210, 40 180, 25 210 C 15 240, 60 260, 85 220 Z" fill="#0B2341" stroke="none" />
+  </g>
+
+  <!-- Text Group -->
+  <g transform="translate(380, 205)">
+    <!-- SICE -->
+    <text x="0" y="0" class="title">SICE</text>
+    
+    <!-- Subtitle -->
+    <text x="2" y="45" class="subtitle">
+      <tspan x="2" dy="0">SALÓN INTERNACIONAL</tspan>
+      <tspan x="2" dy="32">DE COACHING EJECUTIVO</tspan>
+    </text>
+  </g>
+</svg>

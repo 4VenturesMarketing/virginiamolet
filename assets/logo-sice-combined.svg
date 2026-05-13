@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&amp;display=swap');
+      .title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 140px;
+        fill: #0B2341;
+        letter-spacing: 15px;
+      }
+      .subtitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        fill: #0B2341;
+        letter-spacing: 7px;
+      }
+    </style>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C158" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#B38B22" />
+    </linearGradient>
+  </defs>
+
+  <!-- Compass Rose ON TOP -->
+  <g transform="translate(400, 75) scale(1.1)">
+    <!-- Main Cross -->
+    <path d="M0 -45 L8 -8 L45 0 L8 8 L0 45 L-8 8 L-45 0 L-8 -8 Z" fill="url(#goldGradient)" />
+    <!-- Secondary Cross (Diagonal) -->
+    <path d="M0 -25 L5 -5 L25 0 L5 5 L0 25 L-5 5 L-25 0 L-5 -5 Z" fill="url(#goldGradient)" opacity="0.8" transform="rotate(45)" />
+    <!-- Center Point -->
+    <circle cx="0" cy="0" r="4" fill="#0B2341" />
+  </g>
+
+  <!-- Main Text Group -->
+  <g transform="translate(400, 240)">
+    <text text-anchor="middle" class="title">
+      <tspan x="-165">S</tspan>
+      <tspan x="-55" fill="transparent">I</tspan>
+      <tspan x="105">CE</tspan>
+    </text>
+    
+    <!-- Custom I with Star -->
+    <g transform="translate(-55, 0)">
+      <!-- Base of I -->
+      <rect x="-10" y="-105" width="20" height="105" fill="#0B2341" rx="2" />
+      <!-- Star on top of I -->
+      <g transform="translate(0, -125) scale(0.4)">
+        <path d="M0 -45 L8 -8 L45 0 L8 8 L0 45 L-8 8 L-45 0 L-8 -8 Z" fill="url(#goldGradient)" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative Line -->
+  <line x1="150" y1="285" x2="650" y2="285" stroke="url(#goldGradient)" stroke-width="3" />
+  
+  <!-- Subtitles -->
+  <text x="400" y="330" class="subtitle" text-anchor="middle">I SALÓN INTERNACIONAL</text>
+  <text x="400" y="365" class="subtitle" text-anchor="middle">DE COACHING EJECUTIVO</text>
+</svg>

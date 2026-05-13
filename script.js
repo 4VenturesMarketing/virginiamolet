@@ -31,27 +31,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Form & Floating CTA Logic (Page-specific) ---
     const form = document.getElementById('inscription-form');
+    const contactForm = document.getElementById('contact-form');
     const floatingCta = document.getElementById('floatingCta');
     const submitBtn = document.getElementById('submitBtn');
+    const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+
+    // Helper to send data to n8n
+    const sendToN8n = async (data) => {
+        const response = await fetch('https://n8n.4ventures.es/webhook/virginia-molet-coaching', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok) throw new Error('Error en el envío a n8n');
+        return response;
+    };
 
     if (form && submitBtn) {
         const spinner = submitBtn.querySelector('.spinner');
         const btnText = submitBtn.querySelector('span');
 
-        // Form Submission Logic
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Show loading state
             if (btnText) btnText.classList.add('hidden');
             if (spinner) spinner.classList.remove('hidden');
             submitBtn.disabled = true;
             
-            // Collect data
             const formData = new FormData(form);
             const fullPhone = `${formData.get('codigo-pais')}${formData.get('telefono')}`;
             
             const data = {
+                type: 'registration',
                 nombre: formData.get('nombre'),
                 apellido: formData.get('apellido'),
                 email: formData.get('email'),
@@ -61,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // Send directly to Zapier (Backup)
+                // Send to Zapier
                 const zapierParams = new URLSearchParams();
                 zapierParams.append('nombre', data.nombre);
                 zapierParams.append('apellido', data.apellido);
@@ -72,39 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isEn = lang.startsWith('en') || path.includes('/en');
                 zapierParams.append('etiqueta', isEn ? 'salon_en' : 'salón');
 
-                const zapierPromise = fetch('https://hooks.zapier.com/hooks/catch/13513217/u7m4eoq/', {
+                fetch('https://hooks.zapier.com/hooks/catch/13513217/u7m4eoq/', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: zapierParams.toString()
                 }).catch(e => console.warn('Zapier direct failed'));
 
-                // Send to n8n (Primary) with timeout
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 5000);
+                await sendToN8n(data);
 
-                try {
-                    const response = await fetch('https://n8n-agencia.4ventures.es/webhook/virginia-molet-coaching', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data),
-                        signal: controller.signal
-                    });
-                    clearTimeout(timeoutId);
-                    if (!response.ok) console.warn('n8n primary failed, relying on Zapier');
-                } catch (n8nErr) {
-                    console.warn('n8n request failed or timed out', n8nErr);
-                }
-
-                // Ensure Zapier at least started before redirecting
-                await zapierPromise;
-
-                // Redirect to thank you page
-                const redirectPath = isEn ? '/en/thanks.html' : '/gracias.html';
-                window.location.href = redirectPath;
+                setTimeout(() => {
+                    if (isEn) {
+                        window.location.href = '/en/thanks.html';
+                    } else {
+                        window.location.href = '/gracias.html';
+                    }
+                }, 500);
 
             } catch (err) {
-                console.error('Submission error:', err);
+                console.error(err);
                 alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
                 if (btnText) btnText.classList.remove('hidden');
                 if (spinner) spinner.classList.add('hidden');
@@ -113,76 +109,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Contact Form Logic ---
-    const contactForm = document.getElementById('contact-form');
-    const contactSubmitBtn = document.getElementById('contactSubmitBtn');
-
     if (contactForm && contactSubmitBtn) {
-        const contactSpinner = contactSubmitBtn.querySelector('.spinner');
-        const contactBtnText = contactSubmitBtn.querySelector('span');
+        const spinner = contactSubmitBtn.querySelector('.spinner');
+        const btnText = contactSubmitBtn.querySelector('span');
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-
-            // Show loading state
-            if (contactBtnText) contactBtnText.classList.add('hidden');
-            if (contactSpinner) contactSpinner.classList.remove('hidden');
+            if (btnText) btnText.classList.add('hidden');
+            if (spinner) spinner.classList.remove('hidden');
             contactSubmitBtn.disabled = true;
 
             const formData = new FormData(contactForm);
-            const lang = (document.documentElement.lang || '').toLowerCase();
-            const path = (window.location.pathname || '').toLowerCase();
-            const isEn = lang.startsWith('en') || path.includes('/en');
-
             const data = {
+                type: 'contact',
                 nombre: formData.get('nombre'),
                 email: formData.get('email'),
                 mensaje: formData.get('mensaje'),
                 legal: formData.get('legal') === 'on',
-                type: 'contact',
-                etiqueta: isEn ? 'salon_contacto_en' : 'salon_contacto_es',
                 source: window.location.hostname
             };
 
-            const successMsg = document.getElementById('contactSuccess');
-
             try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 5000);
-
-                const response = await fetch('https://n8n-agencia.4ventures.es/webhook/virginia-molet-coaching', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                    signal: controller.signal
-                });
-                clearTimeout(timeoutId);
-
-                if (!response.ok) throw new Error('Error en el envío');
-
-                // Show success feedback
-                if (successMsg) {
-                    successMsg.innerText = isEn ? 'Message sent' : 'Mensaje enviado';
-                    successMsg.classList.remove('hidden');
-                }
+                await sendToN8n(data);
                 
-                if (contactSpinner) contactSpinner.classList.add('hidden');
-                if (contactBtnText) {
-                    contactBtnText.innerText = isEn ? 'Sent!' : '¡Enviado!';
-                    contactBtnText.classList.remove('hidden');
-                }
-                
+                // Show success alert and reset
+                alert(document.documentElement.lang === 'en' ? 'Message sent successfully!' : '¡Mensaje enviado con éxito!');
                 contactForm.reset();
-                setTimeout(() => {
-                    if (contactBtnText) contactBtnText.innerText = isEn ? 'Send Message' : 'Enviar Mensaje';
-                    contactSubmitBtn.disabled = false;
-                }, 3000);
-
             } catch (err) {
                 console.error(err);
-                alert(isEn ? 'There was an error sending your message. Please try again.' : 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
-                if (contactBtnText) contactBtnText.classList.remove('hidden');
-                if (contactSpinner) contactSpinner.classList.add('hidden');
+                alert('Hubo un error al enviar el mensaje.');
+            } finally {
+                if (btnText) btnText.classList.remove('hidden');
+                if (spinner) spinner.classList.add('hidden');
                 contactSubmitBtn.disabled = false;
             }
         });
