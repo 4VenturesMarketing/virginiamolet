@@ -64,11 +64,11 @@ body {
 }
 
 .nav-brand {
-    display: none;
+    display: block;
 }
 
 .nav-brand .nav-logo {
-    height: 35px;
+    height: 45px;
 }
 
 .nav-menu ul {
@@ -848,9 +848,10 @@ footer::before {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
     margin-bottom: 60px;
+    align-items: start;
 }
 
 .footer-brand-col {
@@ -860,9 +861,10 @@ footer::before {
 }
 
 .footer-logo {
-    height: 50px;
+    height: 80px;
     width: auto;
     object-fit: contain;
+    margin-bottom: 20px;
 }
 
 .footer-brand-col p {
