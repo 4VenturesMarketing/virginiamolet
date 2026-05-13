@@ -68,7 +68,7 @@ body {
 }
 
 .nav-brand .nav-logo {
-    height: 90px;
+    height: 60px;
 }
 
 .nav-menu ul {
@@ -848,8 +848,8 @@ footer::before {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
     margin-bottom: 60px;
     align-items: start;
 }
@@ -861,10 +861,10 @@ footer::before {
 }
 
 .footer-logo {
-    height: 160px;
-    width: auto;
+    max-width: 250px;
+    height: auto;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .footer-brand-col p {
