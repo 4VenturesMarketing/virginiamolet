@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // Send directly to Zapier
+                // Send directly to Zapier (Backup)
                 const zapierParams = new URLSearchParams();
                 zapierParams.append('nombre', data.nombre);
                 zapierParams.append('apellido', data.apellido);
@@ -72,36 +72,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isEn = lang.startsWith('en') || path.includes('/en');
                 zapierParams.append('etiqueta', isEn ? 'salon_en' : 'salón');
 
-                fetch('https://hooks.zapier.com/hooks/catch/13513217/u7m4eoq/', {
+                const zapierPromise = fetch('https://hooks.zapier.com/hooks/catch/13513217/u7m4eoq/', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: zapierParams.toString()
                 }).catch(e => console.warn('Zapier direct failed'));
 
-                const response = await fetch('https://n8n.4ventures.es/webhook/virginia-molet-coaching', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
+                // Send to n8n (Primary) with timeout
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-                if (!response.ok) throw new Error('Error en el envío');
+                try {
+                    const response = await fetch('https://n8n-agencia.4ventures.es/webhook/virginia-molet-coaching', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    if (!response.ok) console.warn('n8n primary failed, relying on Zapier');
+                } catch (n8nErr) {
+                    console.warn('n8n request failed or timed out', n8nErr);
+                }
+
+                // Ensure Zapier at least started before redirecting
+                await zapierPromise;
 
                 // Redirect to thank you page
-                setTimeout(() => {
-                    const lang = (document.documentElement.lang || '').toLowerCase();
-                    const path = (window.location.pathname || '').toLowerCase();
-                    const isEn = lang.startsWith('en') || path.includes('/en');
-                    
-                    if (isEn) {
-                        window.location.href = '/en/thanks.html';
-                    } else {
-                        window.location.href = '/gracias.html';
-                    }
-                }, 500);
+                const redirectPath = isEn ? '/en/thanks.html' : '/gracias.html';
+                window.location.href = redirectPath;
 
             } catch (err) {
-                console.error(err);
+                console.error('Submission error:', err);
                 alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
                 if (btnText) btnText.classList.remove('hidden');
                 if (spinner) spinner.classList.add('hidden');
@@ -137,11 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch('https://n8n.4ventures.es/webhook/virginia-molet-coaching', {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+                const response = await fetch('https://n8n-agencia.4ventures.es/webhook/virginia-molet-coaching', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data),
+                    signal: controller.signal
                 });
+                clearTimeout(timeoutId);
 
                 if (!response.ok) throw new Error('Error en el envío');
 
