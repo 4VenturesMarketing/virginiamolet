@@ -73,6 +73,9 @@ body {
 
 .nav-brand .nav-logo {
     height: 60px;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-menu ul {
@@ -1048,6 +1051,14 @@ footer::before {
     .about-text {
         order: 1;
     }
+
+    .nav-brand .nav-logo {
+        height: 45px;
+    }
+
+    .nav-actions {
+        gap: 15px;
+    }
     
     .about-image {
         order: 2;
@@ -1071,6 +1082,18 @@ footer::before {
         margin-bottom: 20px;
         overflow-wrap: break-word;
         word-break: break-word;
+    }
+
+    .nav-brand .nav-logo {
+        height: 35px;
+    }
+    
+    .nav-actions {
+        gap: 10px;
+    }
+
+    .lang-switcher {
+        font-size: 0.75rem;
     }
     .date-badge {
         font-size: 0.9rem;
