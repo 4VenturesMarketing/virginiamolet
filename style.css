@@ -299,6 +299,17 @@ body {
 
 /* Responsive Menu */
 @media (max-width: 992px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    body {
+        padding-top: 75px;
+    }
+
     .nav-menu {
         position: fixed;
         top: 65px;
@@ -549,6 +560,10 @@ body {
 }
 
 @media (max-width: 576px) {
+    body {
+        padding-top: 65px;
+    }
+
     .floating-cta {
         bottom: 0;
         left: 0;
@@ -1158,7 +1173,7 @@ footer::before {
 
 .speakers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
@@ -1281,7 +1296,7 @@ footer::before {
 /* Mobile: Schedule table → stacked cards */
 @media (max-width: 992px) {
     .schedule-table-container {
-        overflow-x: visible;
+        overflow-x: hidden;
     }
 
     .schedule-table,
