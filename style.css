@@ -397,7 +397,8 @@ body {
 }
 
 .date-badge {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
     padding: 10px 22px;
     background: rgba(251, 191, 36, 0.05);
@@ -420,12 +421,13 @@ body {
 }
 
 .counter-badge {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
     padding: 8px 16px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--color-primary);
+    color: #cbd5e1; /* High contrast text */
     border-radius: 50px;
     font-size: 0.95rem;
     font-weight: 500;
@@ -1175,6 +1177,7 @@ footer::before {
         font-size: 0.75rem;
     }
     .date-badge {
+        display: inline-flex;
         font-size: 0.9rem;
         padding: 8px 15px;
         letter-spacing: 1px;
@@ -1183,6 +1186,7 @@ footer::before {
         line-height: 1.4;
     }
     .counter-badge {
+        display: inline-flex;
         font-size: 0.85rem;
         padding: 6px 12px;
         margin-bottom: 20px;
