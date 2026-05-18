@@ -5,7 +5,7 @@
     --color-accent-yellow-dark: #d97706;
     --color-dark: #0a0e17;        /* Very dark blue/black */
     --color-darker: #05070a;
-    --color-text: #e2e8f0;
+    --color-text: #ffffff;
     --color-white: #ffffff;
     
     --font-heading: 'Crimson Pro', serif;
@@ -509,7 +509,7 @@ body {
 
 .subtitle {
     font-size: 1.35rem;
-    color: #cbd5e1;
+    color: #ffffff;
     max-width: 600px; /* Increased from 500px to allow more text per line */
     margin-bottom: 32px;
     font-weight: 300;
@@ -1215,7 +1215,7 @@ footer::before {
 
 .intro-text p {
     font-size: 1.15rem;
-    color: #cbd5e1;
+    color: #ffffff;
     margin-bottom: 20px;
     line-height: 1.7;
 }
@@ -1296,7 +1296,7 @@ footer::before {
 
 .speaker-bio {
     font-size: 0.95rem;
-    color: #94a3b8;
+    color: #ffffff;
     line-height: 1.6;
     margin-top: 20px;
     text-align: left;
@@ -1447,7 +1447,7 @@ footer::before {
 }
 
 .agenda-nav-bar a {
-    color: #94a3b8;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
@@ -1774,6 +1774,25 @@ footer::before {
     .salon-middle-callout p {
         font-size: 1.25rem;
     }
+}
+
+/* High-Contrast White Text Overrides */
+.text-agencia-accent {
+    color: #ffffff !important;
+}
+
+.speakers-section p.text-center.opacity-70 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.about-text p,
+.timeline-item .content p,
+.organiza-single .organiza-text p,
+.organiza-content p,
+.feature-list li,
+.salon-card p {
+    color: #ffffff !important;
 }
 
 
