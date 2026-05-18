@@ -1786,13 +1786,17 @@ footer::before {
     opacity: 1 !important;
 }
 
+.text-white-force,
+.subtitle,
 .about-text p,
 .timeline-item .content p,
 .organiza-single .organiza-text p,
+.organiza-text p,
 .organiza-content p,
 .feature-list li,
 .salon-card p {
     color: #ffffff !important;
+    opacity: 1 !important;
 }
 
 
