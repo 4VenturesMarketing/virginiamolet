@@ -1359,7 +1359,7 @@ footer::before {
 }
 
 .schedule-table .presenter-cell {
-    color: #94a3b8;
+    color: #ffffff;
     font-size: 0.95rem;
 }
 
@@ -1422,7 +1422,7 @@ footer::before {
 
     .schedule-table .presenter-cell {
         font-size: 0.85rem;
-        color: #64748b;
+        color: #ffffff;
     }
 
     /* Add visual label before each cell */
