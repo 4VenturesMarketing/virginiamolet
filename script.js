@@ -226,4 +226,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, incrementTime);
     }
+
+    // --- SICE Countdown Timer ---
+    const targetDate = new Date('2026-06-12T09:30:00').getTime();
+    const daysEl = document.getElementById('countdown-days');
+    const hoursEl = document.getElementById('countdown-hours');
+    const minsEl = document.getElementById('countdown-mins');
+    const secsEl = document.getElementById('countdown-secs');
+
+    if (daysEl && hoursEl && minsEl && secsEl) {
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                daysEl.textContent = '00';
+                hoursEl.textContent = '00';
+                minsEl.textContent = '00';
+                secsEl.textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.textContent = String(days).padStart(2, '0');
+            hoursEl.textContent = String(hours).padStart(2, '0');
+            minsEl.textContent = String(minutes).padStart(2, '0');
+            secsEl.textContent = String(seconds).padStart(2, '0');
+        };
+
+        // Run once immediately
+        updateCountdown();
+        // Update every second
+        setInterval(updateCountdown, 1000);
+    }
 });
