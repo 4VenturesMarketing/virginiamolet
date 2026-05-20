@@ -198,12 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dynamic Counter Logic ---
     const counterEl = document.getElementById('registered-counter');
     if (counterEl) {
-        // Base count of 560 on May 18, 2026 at 23:00:00
-        const baseDate = new Date('2026-05-18T23:00:00');
-        const now = new Date();
-        const diffMs = now - baseDate;
-        const hoursElapsed = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60)));
-        const targetCount = 560 + (hoursElapsed * 10);
+        const targetCount = 890;
         
         // Dynamic Count-Up Animation
         const duration = 1500; // 1.5 seconds animation
