@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (!sessionStorage.getItem('auto_reloaded')) {
+            sessionStorage.setItem('auto_reloaded', 'true');
+            window.location.reload(true);
+        }
+    </script>
     <title>I Salón Internacional de Coaching Ejecutivo | 12 de Junio, Madrid</title>
     <meta name="description" content="Inscríbete al I Salón Internacional de Coaching Ejecutivo este 12 de Junio de 09:30 a 20:00 h en el Movistar Arena de Madrid con expertos como John Leary-Joyce y Juan Carlos Cubeiro.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
