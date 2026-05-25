@@ -198,14 +198,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dynamic Counter Logic ---
     const counterEl = document.getElementById('registered-counter');
     if (counterEl) {
-        const targetCount = 920;
+        const targetCount = 1030;
         
         // Dynamic Count-Up Animation
         const duration = 1500; // 1.5 seconds animation
         const startCount = Math.max(560, targetCount - 20); // start 20 counts below for aesthetic transition
         let currentCount = startCount;
         
-        counterEl.textContent = startCount;
+        counterEl.textContent = startCount.toLocaleString('es-ES');
         
         // Calculate dynamic speed based on range
         const totalSteps = targetCount - startCount;
@@ -213,11 +213,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const timer = setInterval(() => {
             if (currentCount >= targetCount) {
-                counterEl.textContent = targetCount;
+                counterEl.textContent = targetCount.toLocaleString('es-ES');
                 clearInterval(timer);
             } else {
                 currentCount++;
-                counterEl.textContent = currentCount;
+                counterEl.textContent = currentCount.toLocaleString('es-ES');
             }
         }, incrementTime);
     }
