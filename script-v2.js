@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dynamic Counter Logic ---
     const counterEl = document.getElementById('registered-counter');
     if (counterEl) {
-        const targetCount = 1095;
+        const targetCount = 1134;
         
         // Dynamic Count-Up Animation
         const duration = 1500; // 1.5 seconds animation
